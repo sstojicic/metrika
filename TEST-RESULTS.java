@@ -67,3 +67,71 @@ public class CalculatorTest {
         System.out.println();
     }
 }
+public class CalculatorBlackBoxTest {
+
+    public static void main(String[] args) {
+        testRunMethod();
+    }
+
+    public static void testRunMethod() {
+        System.out.println("Testing Run method (Black Box)...\n");
+
+        // Test 1: Addition
+        String expression1 = "2+3";
+        String expectedResult1 = "5.0";
+        testExpression(expression1, expectedResult1);
+
+        // Test 2: Subtraction
+        String expression2 = "7-4";
+        String expectedResult2 = "3.0";
+        testExpression(expression2, expectedResult2);
+
+        // Test 3: Multiplication
+        String expression3 = "5*2";
+        String expectedResult3 = "10.0";
+        testExpression(expression3, expectedResult3);
+
+        // Test 4: Division
+        String expression4 = "10/2";
+        String expectedResult4 = "5.0";
+        testExpression(expression4, expectedResult4);
+
+        // Test 5: Combination of operations
+        String expression5 = "2+3*4-10/2";
+        String expectedResult5 = "11.0";
+        testExpression(expression5, expectedResult5);
+
+        // Test 6: Expression starting with addition
+        String expression6 = "+5+3";
+        String expectedResult6 = "8.0";
+        testExpression(expression6, expectedResult6);
+
+        // Test 7: Expression starting with subtraction
+        String expression7 = "-5+3";
+        String expectedResult7 = "-2.0";
+        testExpression(expression7, expectedResult7);
+
+        // Test 8: Expression with decimal numbers
+        String expression8 = "3.5*2.5";
+        String expectedResult8 = "8.75";
+        testExpression(expression8, expectedResult8);
+
+        // Test 9: Expression with negative result
+        String expression9 = "2-5";
+        String expectedResult9 = "-3.0";
+        testExpression(expression9, expectedResult9);
+
+        // Test 10: Expression with division by zero
+        String expression10 = "5/0";
+        String expectedResult10 = "Infinity";
+        testExpression(expression10, expectedResult10);
+
+        System.out.println("All Run method (Black Box) tests passed!");
+    }
+
+    private static void testExpression(String expression, String expectedResult) {
+        String result = Calculator.Run(expression);
+        assert result.equals(expectedResult) : "Test failed: Expression: " + expression + ", Expected: " + expectedResult + ", Actual: " + result;
+        System.out.println("Test passed: Expression: " + expression + ", Result: " + result);
+    }
+}
